@@ -12,26 +12,30 @@ export default function Experience()
     const [clicked, setClicked] = useState(false);
     const resumePlane = useRef()
     const camera = useRef()
+    const float = useRef()
 
     const vec = new THREE.Vector3()
 
     // camera position for resume
-    // const xPosition = -1.5
-    // const yPosition = 0
-    // const zPosition = 4.5
     const xPosition = 0
     const yPosition = 0
     const zPosition = 4.7
 
+    // move camera to resume
     useFrame(state =>
     {
       if (clicked) {
         // state.camera.lookAt(resumePlane.current.position)
-        state.camera.position.lerp(vec.set(xPosition, yPosition, zPosition), 0.03)
+        state.camera.position.lerp(vec.set(xPosition, yPosition, zPosition), 0.04)
         state.camera.updateProjectionMatrix()
+        // move the name vertical against the resume
+        float.current.position.lerp(vec.set(.25, 0, 0), 0.04)
+        float.current.scale.lerp(vec.set(.75, .75, .75), 0.04)
       } else {
         state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
         state.camera.updateProjectionMatrix()
+        float.current.position.lerp(vec.set(0, 0, 0), 0.04)
+        float.current.scale.lerp(vec.set(1, 1, 1), 0.04)
       }
       return null;
 
@@ -104,7 +108,7 @@ export default function Experience()
       </Text3D>
 
       {/* Adding my name text */}
-      <Float size={1} position={[0, 0, 0]} >
+      <Float ref={float} size={.5} position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} >
         <TextWords />
       </Float>
 
