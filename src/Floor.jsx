@@ -20,12 +20,12 @@ export default function Floor() {
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow >
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
-          mirror={0.8}
+          mirror={0.7}
           resolution={1024}
-          mixBlur={5}
-          mixStrength={.3}
+          mixBlur={1}
+          mixStrength={.2}
           blur={blur || [5, 5]}
-          metalness={0.1}
+          metalness={0.2}
           map={marbleColor}
           normalMap={marbleNormal}
           roughnessMap={marbleRough}

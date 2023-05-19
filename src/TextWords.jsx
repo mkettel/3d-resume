@@ -13,9 +13,9 @@ export default function TextWords() {
 {/* 3D Text */}
   <Text3D
     font={fontUrl}
-    position={[.3, -1, .1]}
+    position={[.4, -1, .1]}
     rotation={[-.2, -.5, -.1]}
-    scale={[.27, .27, .27]}
+    scale={[.29, .29, .29]}
     >
       Matt Kettelkamp
     <meshBasicMaterial color={'#C6AD94'}  />

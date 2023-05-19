@@ -18,8 +18,10 @@ export default function Experience()
     })
 
     // File paths
-    const [ resume ] = useLoader(TextureLoader, [
-      './environmentMaps/bold-resume-img.png'
+    const [ resume, newResume, darkResume ] = useLoader(TextureLoader, [
+      './environmentMaps/bold-resume-img.png',
+      './environmentMaps/new-resume.png',
+      './environmentMaps/dark-resume.png'
     ])
 
     // Font for 3d Text
@@ -33,16 +35,16 @@ export default function Experience()
 
         <OrbitControls makeDefault />
 
-        {/* <directionalLight position={ [ 1, 2, 3 ] } intensity={ 2 } castShadow /> */}
         {/* light for the backside */}
         <directionalLight position={ [ -1, -2, -3 ] } intensity={ .3 } />
         <spotLight intensity={2.5} position={[10, 6, 10]} penumbra={1} angle={0.4} color={'#EFF2EF'} />
 
+
         {/* Resume Plane */}
-        <mesh ref={resumePlane} scale={1.3} position={[-1.3, -.2, .1]} rotation={[0, 0, 0]} castShadow >
-            <planeGeometry args={[2.5, 3, 2]}/>
+        <mesh ref={resumePlane} scale={1.3} position={[-1.3, -.05, .1]} rotation={[0, 0, 0]} castShadow >
+            <planeGeometry args={[2.5, 3.5, 2]}/>
             <boxGeometry args={[2.3, 3, .05]}/>
-            <meshStandardMaterial map={ resume } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
+            <meshStandardMaterial map={ darkResume } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
         </mesh>
 
 
