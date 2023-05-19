@@ -13,7 +13,7 @@ root.render(
             fov: 50,
             near: 0.1,
             far: 200,
-            position: [ -2.1, -.1, 5.3 ]
+            position: [ -3.1, -.1, 6.3 ]
         } }
     >
         <Stars saturation={1} radius={60} />

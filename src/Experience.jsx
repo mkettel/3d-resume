@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { Float, Stage, OrbitControls, Environment, Sky, SoftShadows, Text, SpotLightShadow, SpotLight, Text3D } from '@react-three/drei'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Perf } from 'r3f-perf'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -9,13 +9,39 @@ import TextWords from './TextWords.jsx'
 
 export default function Experience()
 {
+    const [clicked, setClicked] = useState(false);
     const resumePlane = useRef()
+    const camera = useRef()
 
-    useFrame((state, delta) =>
+    const vec = new THREE.Vector3()
+
+    // camera position for resume
+    // const xPosition = -1.5
+    // const yPosition = 0
+    // const zPosition = 4.5
+    const xPosition = 0
+    const yPosition = 0
+    const zPosition = 4.7
+
+    useFrame(state =>
     {
-        // cube.current.rotation.y += delta * 0.2
-        // resumePlane.current.rotation.y += delta * 0.02
+      if (clicked) {
+        // state.camera.lookAt(resumePlane.current.position)
+        state.camera.position.lerp(vec.set(xPosition, yPosition, zPosition), 0.03)
+        state.camera.updateProjectionMatrix()
+      } else {
+        state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
+        state.camera.updateProjectionMatrix()
+      }
+      return null;
+
     })
+
+    // on click, move camera to face resume
+    const resumeClick = (e) => {
+      console.log('clicked')
+
+    }
 
     // File paths
     const [ resume, newResume, darkResume ] = useLoader(TextureLoader, [
@@ -41,13 +67,11 @@ export default function Experience()
 
 
         {/* Resume Plane */}
-        <mesh ref={resumePlane} scale={1.3} position={[-1.3, -.05, .1]} rotation={[0, 0, 0]} castShadow >
+        <mesh ref={resumePlane} onClick={() => setClicked(prevClicked => !prevClicked)} scale={1.3} position={[-1.3, -.05, .1]} rotation={[0, 0, 0]} castShadow >
             <planeGeometry args={[2.5, 3.5, 2]}/>
             <boxGeometry args={[2.3, 3, .05]}/>
             <meshStandardMaterial map={ darkResume } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
         </mesh>
-
-
 
 
         {/* Name 2d */}
@@ -79,10 +103,12 @@ export default function Experience()
         <meshBasicMaterial color={'#262626'}  />
       </Text3D>
 
+      {/* Adding my name text */}
       <Float size={1} position={[0, 0, 0]} >
         <TextWords />
       </Float>
 
+      {/* Adding the Floor */}
       <Floor />
 
     </>
