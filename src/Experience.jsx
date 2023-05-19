@@ -26,16 +26,15 @@ export default function Experience()
     {
       if (clicked) {
         // state.camera.lookAt(resumePlane.current.position)
-        state.camera.position.lerp(vec.set(xPosition, yPosition, zPosition), 0.04)
-        state.camera.updateProjectionMatrix()
-        // move the name vertical against the resume
-        float.current.position.lerp(vec.set(.25, 0, 0), 0.04)
-        float.current.scale.lerp(vec.set(.75, .75, .75), 0.04)
+        // state.camera.position.lerp(vec.set(xPosition, yPosition, zPosition), 0.04)
+        // state.camera.updateProjectionMatrix()
+        // float.current.position.lerp(vec.set(.25, 0, 0), 0.04)
+        // float.current.scale.lerp(vec.set(.75, .75, .75), 0.04)
       } else {
-        state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
-        state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, 0), 0.04)
-        float.current.scale.lerp(vec.set(1, 1, 1), 0.04)
+        // state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
+        // state.camera.updateProjectionMatrix()
+        // float.current.position.lerp(vec.set(0, 0, 0), 0.04)
+        // float.current.scale.lerp(vec.set(1, 1, 1), 0.04)
       }
       return null;
 
