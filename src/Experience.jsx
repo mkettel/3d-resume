@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
+// import Bunny from './Bunny.jsx'
 
 export default function Experience()
 {
@@ -96,7 +97,7 @@ export default function Experience()
 
 
         {/* Name 2d */}
-        <Text
+        {/* <Text
             color={'white'}
             fontSize={.18}
             maxWidth={7}
@@ -110,7 +111,9 @@ export default function Experience()
             rotation={[0, .1, Math.PI / 2]}
             >
 
-        </Text>
+        </Text> */}
+
+        {/* Import the Model */}
 
 
       <Text3D
@@ -125,11 +128,12 @@ export default function Experience()
       </Text3D>
 
       {/* Sphere Under Name */}
-      <mesh position={[-3.4, -1.65, -.3]} rotation={[0, 0, 0]} scale={[.2, .2, .2]}  >
-        <sphereGeometry args={[2, 32, 32]} />
-        <meshStandardMaterial color={'blue'} />
+      <mesh position={[-3.3, -1.65, 0]} rotation={[0, 0, 0]} scale={[.2, .2, .2]}  >
+        <sphereGeometry args={[1.8, 32, 32]} />
+        <meshStandardMaterial color={'blue'} roughness={1.5} metalness={.3} />
         <Decal position={[0, .5, 2]} rotation={[0, 0, 0]} scale={[2.2, 2.2, 2.2]} map={threeIcon} map-anisotropy={16} />
       </mesh>
+
 
       {/* Adding my name text */}
       <Float ref={float} size={.5} position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} >
