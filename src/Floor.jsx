@@ -34,7 +34,6 @@ export default function Floor() {
           />
       </mesh>
 
-      <SoftShadows />
 
       {/* <Backdrop
           floor={1} // Stretches the floor segment, 0.25 by default
