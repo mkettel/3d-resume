@@ -1,22 +1,22 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { Decal, SoftShadows, BakeShadows, Float, OrbitControls, Environment, Text, SpotLightShadow, SpotLight, Text3D } from '@react-three/drei'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Perf } from 'r3f-perf'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
-// import Bunny from './Bunny.jsx'
+
 
 export default function Experience()
 {
     // States
     const [clicked, setClicked] = useState(false);
+    const [hovered, setHovered] = useState(false);
 
     // Refs
     const resumePlane = useRef()
-    const camera = useRef()
-    const float = useRef()
+    const float = useRef() // floating 3D text
 
     const vec = new THREE.Vector3()
 
@@ -44,11 +44,11 @@ export default function Experience()
 
     })
 
-    // on click, move camera to face resume
-    const resumeClick = (e) => {
-      console.log('clicked')
+    // Hover is pointer on resume
+    useEffect(() => {
+      document.body.style.cursor = hovered ? 'pointer' : 'auto'
+    }, [hovered])
 
-    }
 
     // File paths
     const [ resume, newResume, darkResume, threeIcon ] = useLoader(TextureLoader, [
@@ -72,24 +72,26 @@ export default function Experience()
 
         {/* light for the backside */}
         <directionalLight position={ [ -2, -1, -3 ] } intensity={ .3 } />
-        <spotLight
-        intensity={2.5}
-        position={[9, 6, 8]}
-        penumbra={.5}
-        angle={.4}
-        color={'#EFF2EF'}
-        castShadow
-        shadow-mapSize={ [ 1024, 1024 ] }
-        shadow-camera-near={ 10 }
-        shadow-camera-far={ 50 }
-        shadow-camera-top={ 5 }
-        shadow-camera-right={ 5 }
-        shadow-camera-bottom={ - 5 }
-        shadow-camera-left={ - 5 }
-        />
+        <Float ref={float} speed={2} size={1} position={[-1, 0, -1]} floatingRange={[1, 2]}>
+          <spotLight
+          intensity={2.5}
+          position={[9, 6, 8]}
+          penumbra={.5}
+          angle={.4}
+          color={'#EFF2EF'}
+          castShadow
+          shadow-mapSize={ [ 1024, 1024 ] }
+          shadow-camera-near={ 10 }
+          shadow-camera-far={ 50 }
+          shadow-camera-top={ 5 }
+          shadow-camera-right={ 5 }
+          shadow-camera-bottom={ - 5 }
+          shadow-camera-left={ - 5 }
+          />
+        </Float>
 
         {/* Resume Plane */}
-        <mesh ref={resumePlane} onClick={() => setClicked(prevClicked => !prevClicked)} scale={1.3} position={[-1.3, -.05, .1]} rotation={[0, 0, 0]} castShadow >
+        <mesh ref={resumePlane} onClick={() => setClicked(prevClicked => !prevClicked)} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)} scale={1.3} position={[-1.3, -.05, .1]} rotation={[0, 0, 0]} castShadow >
             <planeGeometry args={[2.5, 3.5, 2]}/>
             <boxGeometry args={[2.3, 3, .05]}/>
             <meshStandardMaterial map={ darkResume } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
@@ -113,8 +115,6 @@ export default function Experience()
 
         </Text> */}
 
-        {/* Import the Model */}
-
 
       <Text3D
         font={chillaxFont}
@@ -128,7 +128,7 @@ export default function Experience()
       </Text3D>
 
       {/* Sphere Under Name */}
-      <mesh position={[-3.3, -1.65, 0]} rotation={[0, 0, 0]} scale={[.2, .2, .2]}  >
+      <mesh position={[.9, -1.65, .5]} rotation={[0, 0, 0]} scale={[.2, .2, .2]}  >
         <sphereGeometry args={[1.8, 32, 32]} />
         <meshStandardMaterial color={'blue'} roughness={1.5} metalness={.3} />
         <Decal position={[0, .5, 2]} rotation={[0, 0, 0]} scale={[2.2, 2.2, 2.2]} map={threeIcon} map-anisotropy={16} />
@@ -136,9 +136,9 @@ export default function Experience()
 
 
       {/* Adding my name text */}
-      <Float ref={float} size={.5} position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} >
+      {/* <Float ref={float} size={.5} position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} > */}
         <TextWords />
-      </Float>
+      {/* </Float> */}
 
       {/* Adding the Floor */}
       <Floor />

@@ -5,6 +5,7 @@ import Experience from './Experience.jsx'
 import { Stars } from '@react-three/drei'
 
 
+
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
@@ -20,4 +21,5 @@ root.render(
         <Stars saturation={1} radius={60} />
         <Experience />
     </Canvas>
+
 )
