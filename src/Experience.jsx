@@ -40,7 +40,7 @@ export default function Experience()
         state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
         state.camera.updateProjectionMatrix()
         float.current.position.lerp(vec.set(0, 0, 0), 0.04)
-        float.current.scale.lerp(vec.set(1, 1, 1), 0.04)
+        float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.04)
       }
       return null;
 

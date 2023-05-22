@@ -10,3 +10,40 @@ body,
     background-color: #292828;
     /* background-color: aqua; */
 }
+
+/* Overlay Links */
+.overlayContainer {
+  position: absolute;
+  display: flex;
+  top: 20px;
+  left: 10px;
+}
+.overlayContainer > .overlayContainer_text {
+  text-decoration: none;
+  color: rgb(213, 213, 213);
+  margin: 0px 10px;
+  font-size: 20px;
+}
+
+/* Date Container */
+.dateContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+}
+.dateContainer > .dateContainer_text {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* pdfContainer */
+.pdfContainer {
+  position: absolute;
+  left: 10px;
+  bottom: 20px;
+}
+.pdfContainer > .pdfContainer_text {
+  color: white;
+  text-decoration: none;
+}
