@@ -24,6 +24,14 @@ body,
   margin: 0px 10px;
   font-size: 20px;
 }
+.overlayContainer > .overlayContainer_text:hover {
+  /* color: white; */
+  color: #FC7753;
+  /* transition: .2s; */
+}
+.overlayContainer > .overlayContainer_text:nth-child(5) {
+  margin-left: 5px;
+}
 
 /* Date Container */
 .dateContainer {
@@ -35,15 +43,4 @@ body,
   color: white;
   text-decoration: none;
   font-size: 18px;
-}
-
-/* pdfContainer */
-.pdfContainer {
-  position: absolute;
-  left: 10px;
-  bottom: 20px;
-}
-.pdfContainer > .pdfContainer_text {
-  color: white;
-  text-decoration: none;
 }
