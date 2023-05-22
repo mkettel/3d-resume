@@ -18,7 +18,7 @@ root.render(
             position: [ -3.1, -.1, 6.3 ]
         } }
     >
-        <Stars saturation={1} radius={60} />
+        <Stars saturation={0} radius={60} speed={1.5} fade />
         <Experience />
     </Canvas>
 

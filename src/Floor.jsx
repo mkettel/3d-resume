@@ -18,7 +18,7 @@ export default function Floor() {
 
     {/* make a floor for the resume */}
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow >
-          <planeGeometry args={[50, 50]} />
+          <planeGeometry args={[60, 60]} />
           <MeshReflectorMaterial
           mirror={0.7}
           resolution={1024}

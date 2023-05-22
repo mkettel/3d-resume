@@ -17,17 +17,14 @@ export default function TextWords() {
     rotation={[-.2, -.5, -.1]}
     scale={[.29, .29, .29]}
     bevelEnabled
-    bevelSize={0.01}
-    bevelSegments={10}
-    curveSegments={128}
-    bevelThickness={0.01}
+    // bevelSize={0.01}
+    // bevelSegments={10}
+    curveSegments={138}
+    // bevelThickness={0.01}
     >
       Matt Kettelkamp
-    <meshBasicMaterial color={'#C6AD94'} />
+    <meshBasicMaterial color={'#FC7753'} />
   </Text3D>
-
-
-
 
   </>
 }
