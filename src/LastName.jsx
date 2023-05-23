@@ -18,7 +18,7 @@ export default function LastName() {
     font={latoLight }
     // position={[1.5, -1.6, -1.5]}
     // position={[1.3, -1.6, -1.3]}
-    rotation={[0, -.3, 0]}
+    rotation={[0, -.1, 0]}
     scale={[.4, .4, .4]}
     bevelEnabled
     // bevelSize={0.01}
@@ -28,7 +28,7 @@ export default function LastName() {
     // change thickness of text
     depth={0.09}
     // change depth of text
-    height={0.04}
+    height={0.09}
     letterSpacing={.2}
     >
       KETTELKAMP

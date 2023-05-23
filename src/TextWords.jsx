@@ -17,7 +17,7 @@ export default function TextWords() {
     font={latoLight }
     // position={[-.9, -1.6, -.2]}
     // rotation={[-.2, -.5, -.1]}
-    rotation={[0, -.3, 0]}
+    rotation={[0, -.1, 0]}
     // size={.4}
     scale={[.4, .4, .4]}
     bevelEnabled
@@ -28,7 +28,7 @@ export default function TextWords() {
     // change thickness of text
     depth={0.09}
     // change depth of text
-    height={0.04}
+    height={0.09}
     letterSpacing={.2}
     >
       MATTHEW

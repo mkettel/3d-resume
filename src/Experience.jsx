@@ -26,10 +26,6 @@ export default function Experience()
     const vec = new THREE.Vector3()
 
     // camera position for resume
-    // const xPosition = 0
-    // const yPosition = 0
-    // const zPosition = 4.7
-
     const xPosition = -1
     const yPosition = -5
     const zPosition = 4.7
@@ -42,9 +38,6 @@ export default function Experience()
     // move camera to resume
     useFrame(state =>
     {
-      // lookAtPos.x = Math.sin(state.clock.getElapsedTime() * 0.5)
-
-
       if (clicked) {
 
         state.camera.position.lerp(vec.set(-1.35, 0, 4.7), 0.04)
@@ -66,9 +59,6 @@ export default function Experience()
 
         lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
         lastName.current.position.lerp(vec.set(0, 0, 0), 0.03)
-
-
-
       }
       return null;
 
