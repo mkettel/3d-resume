@@ -7,7 +7,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
-import LastName from './lastName.jsx'
+import LastName from './LastName.jsx'
 
 
 export default function Experience()
