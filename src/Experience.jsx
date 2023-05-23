@@ -48,7 +48,7 @@ export default function Experience()
 
         state.camera.position.lerp(vec.set(-1.35, 0, 4.7), 0.04)
         state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
-        state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 50, 0.04)
+        state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 52, 0.04)
         state.camera.updateProjectionMatrix()
         float.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
         float.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
