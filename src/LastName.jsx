@@ -2,7 +2,7 @@ import { useFrame, useLoader } from '@react-three/fiber'
 import { Text3D } from '@react-three/drei'
 
 
-export default function TextWords() {
+export default function LastName() {
 
 
   const chillaxFont = './fonts/chillax-font.json'
@@ -13,25 +13,25 @@ export default function TextWords() {
   return <>
 
 {/* 3D Text */}
+
   <Text3D
     font={latoLight }
-    // position={[-.9, -1.6, -.2]}
-    // rotation={[-.2, -.5, -.1]}
-    rotation={[0, .2, 0]}
-    size={.4}
-    // scale={[.4, .4, .4]}
+    // position={[1.5, -1.6, -1.5]}
+    // position={[1.3, -1.6, -1.3]}
+    rotation={[0, -.3, 0]}
+    scale={[.4, .4, .4]}
     bevelEnabled
     // bevelSize={0.01}
     // bevelSegments={10}
     curveSegments={138}
     // bevelThickness={0.01}
     // change thickness of text
-    depth={0.09}
+    depth={0.5}
     // change depth of text
-    height={0.04}
+    height={0.3}
     letterSpacing={.2}
     >
-      MATTHEW
+      KETTELKAMP
     <meshBasicMaterial color={'#A4A5A3'} />
   </Text3D>
 

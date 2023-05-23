@@ -1,7 +1,5 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { Backdrop, MeshReflectorMaterial, SoftShadows } from '@react-three/drei'
-import { useRef } from 'react'
-import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 export default function Floor() {
