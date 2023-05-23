@@ -26,9 +26,9 @@ export default function LastName() {
     curveSegments={138}
     // bevelThickness={0.01}
     // change thickness of text
-    depth={0.5}
+    depth={0.09}
     // change depth of text
-    height={0.3}
+    height={0.04}
     letterSpacing={.2}
     >
       KETTELKAMP

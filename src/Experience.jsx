@@ -7,7 +7,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
-import LastName from './LastName.jsx'
+import LastName from './lastName.jsx'
 
 
 export default function Experience()
@@ -50,17 +50,17 @@ export default function Experience()
         state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
         state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 50, 0.04)
         state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, -1.3), 0.03)
-        float.current.scale.lerp(vec.set(.85, .85, .85), 0.03)
+        float.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
+        float.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
 
-        lastName.current.scale.lerp(vec.set(.85, .85, .85), 0.03)
+        lastName.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
         lastName.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
       } else {
         state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
         state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 60, 0.04)
         state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03)
         state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(-1, -1.6, -1), 0.03)
+        float.current.position.lerp(vec.set(0, 0, 0), 0.03)
         float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
 
         lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
@@ -143,7 +143,7 @@ export default function Experience()
             font={'./fonts/Roboto-Bold.ttf'}
             anchorX={'center'}
             anchorY={'middle'}
-            position={[-2.9, 1.4, .3]}
+            position={[-4.9, 1.4, .3]}
             rotation={[0, .1, Math.PI / 2]}
             >
         </Text> */}
@@ -174,11 +174,11 @@ export default function Experience()
 
 
       {/* Adding my name text */}
-      <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[-6.5, -1.8, -1]} scale={.8}  >
+      <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.8, -1]} scale={.8}  >
         <TextWords />
       </Float>
 
-      <Float ref={lastName} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, -1.8, -1]} scale={.8} >
+      <Float ref={lastName} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.2, -1]} scale={.8} >
         <LastName />
       </Float>
 

@@ -17,9 +17,9 @@ export default function TextWords() {
     font={latoLight }
     // position={[-.9, -1.6, -.2]}
     // rotation={[-.2, -.5, -.1]}
-    rotation={[0, .2, 0]}
-    size={.4}
-    // scale={[.4, .4, .4]}
+    rotation={[0, -.3, 0]}
+    // size={.4}
+    scale={[.4, .4, .4]}
     bevelEnabled
     // bevelSize={0.01}
     // bevelSegments={10}
