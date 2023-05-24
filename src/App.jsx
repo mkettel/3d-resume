@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import { Stars, View, Bounds, PerspectiveCamera } from '@react-three/drei'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
+// import loadingVideo from './loaders/donut-load.mp4'
 
 
 export default function App() {
@@ -11,9 +12,26 @@ export default function App() {
   const ref = useRef()
   const view = useRef()
 
+  // Create Loading Animation for when page is loading
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 3500)
+    return () => clearTimeout(timeout)
+  }, [])
+
   return <>
 
-    <div ref={ref} className="container">
+    {loading ? (
+      <div className="loadingContainer">
+        <div className="loadingAnimation">
+          <p><span id='1' className='loadLetter'>M</span><span id="2" className='loadLetter'>K</span></p>
+          {/* <video autoPlay loop muted>
+            <source src={'./loaders/donut-load.mp4'} type="video/mp4" />
+          </video> */}
+        </div>
+      </div>
+    ) : (
+      <div ref={ref} className="container">
       <div className="view" ref={view} />
       <Canvas eventSource={ref} className='canvas' shadows >
           <View index={1} track={view} >
@@ -22,6 +40,7 @@ export default function App() {
               <Experience />
           </View>
       </Canvas>
-    </div>
+      </div>
+    )}
   </>
 }

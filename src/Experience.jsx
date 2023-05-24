@@ -33,8 +33,6 @@ export default function Experience()
     const lookAtPos = new THREE.Vector3()
 
 
-
-
     // move camera to resume
     useFrame(state =>
     {
@@ -122,7 +120,7 @@ export default function Experience()
         castShadow >
             <planeGeometry args={[2.5, 3.5, 2]}/>
             <boxGeometry args={[2.3, 3, .05]}/>
-            <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'transparent'} />
+            <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
         </mesh>
 
 
@@ -146,10 +144,14 @@ export default function Experience()
       <Text3D
         font={latoBold}
         // lay on floor on back
+        // rotation={[-Math.PI / 4, 0, 0]}
         rotation={[-Math.PI / 4, 0, 0]}
+        // position={[-2.8, -2, .3]}
         position={[-2.8, -2, .3]}
         scale={[.2, .2, .2]}
         letterSpacing={.15}
+        height={.2}
+
         >
           Full Stack Developer
         <meshBasicMaterial color={'#262626'} castShadow  />

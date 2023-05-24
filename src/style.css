@@ -27,12 +27,72 @@ body,
   height: 100%;
 }
 
+/* Loading Screen */
+.loadingContainer {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  z-index: 10000;
+  /* animation: backgroundFade 3.2s ease-in-out forwards; */
+}
+.loadingAnimation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.loadingAnimation .loadLetter {
+  animation: fade 3.2s ease-in-out infinite;
+  opacity: 1;
+}
+.loadingAnimation .loadLetter:nth-child(1) {
+  color: white;
+  animation-delay: 0s;
+}
+.loadingAnimation .loadLetter:nth-child(2) {
+  color: white;
+  opacity: 0;
+  animation-delay: .5s;
+}
+
+/* keyframe animation to rotate second letter downward and swing */
+/* using start and end layout */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Keyframes to fade background color out on load */
+@keyframes backgroundFade {
+  0% {
+    background-color: black;
+  }
+  90% {
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
 /* Overlay Links */
 .overlayContainer {
   position: absolute;
   display: flex;
   top: 20px;
   left: 10px;
+  z-index: 1;
 }
 .overlayContainer > .overlayContainer_text {
   text-decoration: none;
