@@ -135,9 +135,10 @@ export default function Experience()
             font={'./fonts/Roboto-Bold.ttf'}
             anchorX={'center'}
             anchorY={'middle'}
-            position={[-4.9, 1.4, .3]}
-            rotation={[0, .1, Math.PI / 2]}
+            position={[-9.4, 1.95, .3]}
+            rotation={[0, 0, 0]}
             >
+              Go back to the resume
         </Text> */}
 
       {/* Full Stack Dev Letters */}
