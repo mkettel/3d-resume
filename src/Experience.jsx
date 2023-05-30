@@ -8,6 +8,7 @@ import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
 import LastName from './LastName.jsx'
+import Planet from './Planet.jsx'
 
 
 export default function Experience()
@@ -20,7 +21,6 @@ export default function Experience()
     // Refs
     const resumePlane = useRef()
     const float = useRef() // floating 3D text
-    const stickerBall = useRef() // sticker ball
     const lastName = useRef() // last name 3d text
 
     const vec = new THREE.Vector3()
@@ -78,18 +78,9 @@ export default function Experience()
       './environmentMaps/js-icon.png'
     ])
 
-    // useState for texture in case i want to make a button to switch textures
     const [texture, setTexture] = useState(darkResume);
 
-    // Click on resume make function
-   function changeTexture() {
-      if (texture === darkResume) {
-        setTexture(resume)
-      } else {
-        // resumePlane.current.material.map = resume
-        setTexture(darkResume)
-      }
-    }
+
 
     // Font for 3d Text
     const chillaxFont = './fonts/chillax-font.json'
@@ -160,14 +151,8 @@ export default function Experience()
       {/* color: 262626 */}
       {/* rotation={[-Math.PI / 4, 0, 0]} */}
 
-      {/* Sphere Under Name */}
-      {/* <mesh ref={stickerBall} position={[2, -1.4, 1]} onClick={changeTexture} rotation={[0, 0, 0]} scale={[.4, .4, .4]}  >
-        <sphereGeometry args={[1.2, 32, 32]} />
-        <meshStandardMaterial color={'blue'} roughness={1.5} metalness={.3}  />
-        <Decal position={[-.55, .5, 1.2 ]} rotation={[0, 0, 0]} scale={[1.2, 1.2, 1.2]} map={threeIcon} map-anisotropy={16} />
-        <Decal position={[Math.PI / 3.7, .8, -1 ]} rotation={[0, 0, 0]} scale={[1, 1, 1]} map={reactIcon} map-anisotropy={16} />
-        <Decal position={[1, -.2, 1 ]} rotation={[0, 0, 0]} scale={[.9, .9, .9]} map={jsIcon} map-anisotropy={16} />
-      </mesh> */}
+      {/* Planet */}
+      <Planet />
 
 
       {/* Adding my name text */}

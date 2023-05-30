@@ -1,6 +1,7 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { Backdrop, MeshReflectorMaterial, SoftShadows } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import * as THREE from 'three'
 
 export default function Floor() {
 
@@ -15,7 +16,7 @@ export default function Floor() {
 
 
     {/* make a floor for the resume */}
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow >
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow  >
           <planeGeometry args={[60, 60]} />
           <MeshReflectorMaterial
           mirror={0.7}
@@ -29,6 +30,7 @@ export default function Floor() {
           roughnessMap={marbleRough}
           displacementMap={MarbleDis}
           displacementScale={0.1}
+          side={THREE.DoubleSide}
           />
       </mesh>
 
