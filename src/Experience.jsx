@@ -148,8 +148,7 @@ export default function Experience()
           Full Stack Developer
         <meshBasicMaterial color={'#262626'} castShadow  />
       </Text3D>
-      {/* color: 262626 */}
-      {/* rotation={[-Math.PI / 4, 0, 0]} */}
+
 
       {/* Planet */}
       <Planet />
