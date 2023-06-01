@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import { Stars, View, Bounds, PerspectiveCamera } from '@react-three/drei'
 import { useRef, useState, useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react';
 // import loadingVideo from './loaders/donut-load.mp4'
 
 
@@ -42,5 +43,6 @@ export default function App() {
       </Canvas>
       </div>
     )}
+    <Analytics />
   </>
 }

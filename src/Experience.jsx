@@ -149,7 +149,6 @@ export default function Experience()
         <meshBasicMaterial color={'#262626'} castShadow  />
       </Text3D>
 
-
       {/* Planet */}
       <Planet />
 
