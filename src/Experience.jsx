@@ -25,13 +25,6 @@ export default function Experience()
 
     const vec = new THREE.Vector3()
 
-    // camera position for resume
-    const xPosition = -1
-    const yPosition = -5
-    const zPosition = 4.7
-
-    const lookAtPos = new THREE.Vector3()
-
 
     // move camera to resume
     useFrame(state =>
@@ -90,7 +83,7 @@ export default function Experience()
 
     return <>
 
-        {/* <Perf position="top-left" /> */}
+        {/* <Perf position="top-middle" /> */}
 
         {/* <BakeShadows /> */}
         <SoftShadows frustum={ 1.25 } size={ 0.005 } near={ 9.5 } samples={ 17 } rings={ 11 } />
