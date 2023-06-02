@@ -120,6 +120,10 @@ body,
   color: rgb(213, 213, 213);
   font-size: 20px;
 }
+.codeSandbox > .codeSandbox_text:hover {
+  color: #FC7753;
+  /* transition: .2s; */
+}
 
 /* Date Container */
 .dateContainer {
