@@ -1,136 +1,125 @@
-import { useFrame, useLoader } from '@react-three/fiber'
-import { Decal, SoftShadows, BakeShadows, Float, OrbitControls, Text, Text3D } from '@react-three/drei'
-import { useRef, useState, useEffect } from 'react'
-import { Perf } from 'r3f-perf'
-import * as THREE from 'three'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import Floor from './Floor.jsx'
-import TextWords from './TextWords.jsx'
-import Lights from './Lights.jsx'
-import LastName from './LastName.jsx'
-import Planet from './Planet.jsx'
+import { useFrame, useLoader } from "@react-three/fiber";
+import {
+  SoftShadows,
+  Float,
+  OrbitControls,
+  Text,
+  Text3D,
+} from "@react-three/drei";
+import { useRef, useState, useEffect } from "react";
+import { Perf } from "r3f-perf";
+import * as THREE from "three";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+import Floor from "./Floor.jsx";
+import TextWords from "./TextWords.jsx";
+import Lights from "./Lights.jsx";
+import LastName from "./LastName.jsx";
+import Planet from "./Planet.jsx";
 
+export default function Experience() {
+  // States
+  const [clicked, setClicked] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [orbitControls, setOrbitControls] = useState(true);
 
-export default function Experience()
-{
-    // States
-    const [clicked, setClicked] = useState(false);
-    const [hovered, setHovered] = useState(false);
-    const [orbitControls, setOrbitControls] = useState(true);
+  // Refs
+  const resumePlane = useRef();
+  const float = useRef(); // floating 3D text
+  const lastName = useRef(); // last name 3d text
 
-    // Refs
-    const resumePlane = useRef()
-    const float = useRef() // floating 3D text
-    const lastName = useRef() // last name 3d text
+  const vec = new THREE.Vector3();
 
-    const vec = new THREE.Vector3()
+  // move camera to resume
+  useFrame((state) => {
+    if (clicked) {
+      state.camera.position.lerp(vec.set(-1.35, 0, 4.7), 0.04);
+      state.camera.lookAt(
+        resumePlane.current.position.x,
+        resumePlane.current.position.y,
+        resumePlane.current.position.z
+      );
+      state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 52, 0.04);
+      state.camera.updateProjectionMatrix();
+      float.current.position.lerp(vec.set(0, 0, -1.5), 0.03);
+      float.current.scale.lerp(vec.set(0.9, 0.9, 0.9), 0.03);
 
-    // camera position for resume
-    const xPosition = -1
-    const yPosition = -5
-    const zPosition = 4.7
+      lastName.current.scale.lerp(vec.set(0.9, 0.9, 0.9), 0.03);
+      lastName.current.position.lerp(vec.set(0, 0, -1.5), 0.03);
+    } else {
+      state.camera.lookAt(
+        resumePlane.current.position.x,
+        resumePlane.current.position.y,
+        resumePlane.current.position.z
+      );
+      state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 60, 0.04);
+      // state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03) // allows camera to move freely if not clicked
+      state.camera.updateProjectionMatrix();
+      float.current.position.lerp(vec.set(0, 0, 0), 0.03);
+      float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03);
 
-    const lookAtPos = new THREE.Vector3()
+      lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03);
+      lastName.current.position.lerp(vec.set(0, 0, 0), 0.03);
+    }
+    return null;
+  });
 
+  // Hover is pointer on resume
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
 
-    // move camera to resume
-    useFrame(state =>
-    {
-      if (clicked) {
+  // File paths
+  const [resume, newResume, darkResume] = useLoader(TextureLoader, [
+    "./environmentMaps/bold-resume-img.png",
+    "./environmentMaps/new-resume.png",
+    "./environmentMaps/dark-resume.png",
+  ]);
 
-        state.camera.position.lerp(vec.set(-1.35, 0, 4.7), 0.04)
-        state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
-        state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 52, 0.04)
-        state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
-        float.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
+  const [texture, setTexture] = useState(darkResume);
 
-        lastName.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
-        lastName.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
-      } else {
-        state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
-        state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 60, 0.04)
-        // state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03) // allows camera to move freely if not clicked
-        state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, 0), 0.03)
-        float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
+  // Font for 3d Text
+  const chillaxFont = "./fonts/chillax-font.json";
+  const latoLight = "./fonts/lato-light.json";
+  const latoBold = "./fonts/lato-bold.json";
 
-        lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
-        lastName.current.position.lerp(vec.set(0, 0, 0), 0.03)
-      }
-      return null;
+  return (
+    <>
+      {/* <Perf position="top-left" /> */}
 
-    })
+      {/* <BakeShadows /> */}
+      <SoftShadows
+        frustum={1.25}
+        size={0.005}
+        near={9.5}
+        samples={17}
+        rings={11}
+      />
+      <OrbitControls makeDefault />
 
-    // Hover is pointer on resume
-    useEffect(() => {
-      document.body.style.cursor = hovered ? 'pointer' : 'auto'
-    }, [hovered])
+      {/* Lights */}
+      <Lights />
 
-
-    // File paths
-    const [ resume, newResume, darkResume, threeIcon, reactIcon, jsIcon ] = useLoader(TextureLoader, [
-      './environmentMaps/bold-resume-img.png',
-      './environmentMaps/new-resume.png',
-      './environmentMaps/dark-resume.png',
-      './environmentMaps/threejs-icon.png',
-      './environmentMaps/react-sticker.png',
-      './environmentMaps/js-icon.png'
-    ])
-
-    const [texture, setTexture] = useState(darkResume);
-
-
-
-    // Font for 3d Text
-    const chillaxFont = './fonts/chillax-font.json'
-    const latoLight = './fonts/lato-light.json'
-    const latoBold = './fonts/lato-bold.json'
-
-
-    return <>
-
-        {/* <Perf position="top-left" /> */}
-
-        {/* <BakeShadows /> */}
-        <SoftShadows frustum={ 1.25 } size={ 0.005 } near={ 9.5 } samples={ 17 } rings={ 11 } />
-        <OrbitControls makeDefault />
-
-        {/* Lights */}
-        <Lights />
-
-        {/* Resume Plane */}
-        <mesh
+      {/* Resume Plane */}
+      <mesh
         ref={resumePlane}
-        onClick={() => setClicked(prevClicked => !prevClicked)}
+        onClick={() => setClicked((prevClicked) => !prevClicked)}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         scale={1.3}
-        position={[-1.3, -.05, .1]}
+        position={[-1.3, -0.05, 0.1]}
         rotation={[0, 0, 0]}
-        castShadow >
-            <planeGeometry args={[2.5, 3.5, 2]}/>
-            <boxGeometry args={[2.3, 3, .05]}/>
-            <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
-        </mesh>
-
-
-        {/* Name 2d */}
-        {/* <Text
-            color={'white'}
-            fontSize={.18}
-            maxWidth={7}
-            lineHeight={1}
-            letterSpacing={0.08}
-            textAlign={'center'}
-            font={'./fonts/Roboto-Bold.ttf'}
-            anchorX={'center'}
-            anchorY={'middle'}
-            position={[-9.4, 1.95, .3]}
-            rotation={[0, 0, 0]}
-            >
-              Go back to the resume
-        </Text> */}
+        castShadow
+      >
+        <planeGeometry args={[2.5, 3.5, 2]} />
+        <boxGeometry args={[2.3, 3, 0.05]} />
+        <meshStandardMaterial
+          map={texture}
+          side={THREE.DoubleSide}
+          metalness={1}
+          roughness={3}
+          color={"white"}
+        />
+      </mesh>
 
       {/* Full Stack Dev Letters */}
       <Text3D
@@ -139,33 +128,47 @@ export default function Experience()
         // rotation={[-Math.PI / 4, 0, 0]}
         rotation={[-Math.PI / 4, 0, 0]}
         // position={[-2.8, -2, .3]}
-        position={[-2.8, -2, .3]}
-        scale={[.2, .2, .2]}
-        letterSpacing={.15}
-        height={.2}
-
-        >
-          Full Stack Developer
-        <meshBasicMaterial color={'#262626'} castShadow  />
+        position={[-2.8, -2, 0.3]}
+        scale={[0.2, 0.2, 0.2]}
+        letterSpacing={0.15}
+        height={0.2}
+      >
+        Full Stack Developer
+        <meshBasicMaterial color={"#262626"} castShadow />
       </Text3D>
 
       {/* Planet */}
       <Planet />
 
-
       {/* Adding my name text */}
-      <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.8, -1]} scale={.8}  >
+      <Float
+        ref={float}
+        speed={0.001}
+        rotationIntensity={0.05}
+        floatIntensity={0.1}
+        floatingRange={[-0.9, 0]}
+        position={[1.3, 1.8, -1]}
+        scale={0.8}
+      >
         <TextWords />
       </Float>
 
-      <Float ref={lastName} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.2, -1]} scale={.8} >
+      <Float
+        ref={lastName}
+        speed={0.001}
+        rotationIntensity={0.05}
+        floatIntensity={0.1}
+        floatingRange={[-0.9, 0]}
+        position={[1.3, 1.2, -1]}
+        scale={0.8}
+      >
         <LastName />
       </Float>
 
       {/* Adding the Floor */}
       <Floor />
-
     </>
+  );
 }
 
 // Changes:
