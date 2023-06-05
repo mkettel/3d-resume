@@ -7,7 +7,7 @@ import { useFrame, useLoader } from '@react-three/fiber'
 
 
 
-export default function Planet() {
+export default function Mars() {
 
   const stickerBall = useRef() // sticker ball
 

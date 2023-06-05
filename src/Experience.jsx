@@ -8,7 +8,7 @@ import Floor from './Floor.jsx'
 import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
 import LastName from './LastName.jsx'
-import Planet from './Planet.jsx'
+import Mars from './Mars.jsx'
 
 
 export default function Experience()
@@ -143,7 +143,7 @@ export default function Experience()
       </Text3D>
 
       {/* Planet */}
-      <Planet />
+      <Mars />
 
 
       {/* Adding my name text */}
