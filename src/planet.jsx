@@ -10,24 +10,6 @@ import { useFrame, useLoader } from '@react-three/fiber'
 export default function Planet() {
 
   const stickerBall = useRef() // sticker ball
-  const pointLight = useRef() // point light for sticker ball
-
-//   // useState for texture in case i want to make a button to switch textures
-//   const [texture, setTexture] = useState(darkResume);
-
-//   // Click on resume make function
-//  function changeTexture() {
-//     if (texture === darkResume) {
-//       setTexture(resume)
-//     } else {
-//       // resumePlane.current.material.map = resume
-//       setTexture(darkResume)
-//     }
-//   }
-
-// light for the planet ball
-
-
 
   useFrame(() => {
     stickerBall.current.rotation.y += 0.01
