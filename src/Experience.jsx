@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { Decal, SoftShadows, BakeShadows, Float, OrbitControls, Text, Text3D } from '@react-three/drei'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, Suspense } from 'react'
 import { Perf } from 'r3f-perf'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -9,6 +9,7 @@ import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
 import LastName from './LastName.jsx'
 import Mars from './Mars.jsx'
+import Placeholder from './Placeholder.jsx'
 
 
 export default function Experience()
@@ -93,19 +94,21 @@ export default function Experience()
         <Lights />
 
         {/* Resume Plane */}
-        <mesh
-        ref={resumePlane}
-        onClick={() => setClicked(prevClicked => !prevClicked)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        scale={1.3}
-        position={[-1.3, -.05, .1]}
-        rotation={[0, 0, 0]}
-        castShadow >
-            <planeGeometry args={[2.5, 3.5, 2]}/>
-            <boxGeometry args={[2.3, 3, .05]}/>
-            <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
-        </mesh>
+        <Suspense fallback={<Placeholder position={[0, 0, 0]} />}>
+          <mesh
+          ref={resumePlane}
+          onClick={() => setClicked(prevClicked => !prevClicked)}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          scale={1.3}
+          position={[-1.3, -.05, .1]}
+          rotation={[0, 0, 0]}
+          castShadow >
+              <planeGeometry args={[2.5, 3.5, 2]}/>
+              <boxGeometry args={[2.3, 3, .05]}/>
+              <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
+          </mesh>
+        </Suspense>
 
 
         {/* Name 2d */}
