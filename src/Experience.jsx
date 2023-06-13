@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from '@react-three/fiber'
-import { Decal, SoftShadows, BakeShadows, Float, OrbitControls, Text, Text3D } from '@react-three/drei'
-import { useRef, useState, useEffect } from 'react'
+import { Decal, SoftShadows, BakeShadows, Float, OrbitControls, Text, Text3D} from '@react-three/drei'
+import { useRef, useState, useEffect, Suspense } from 'react'
 import { Perf } from 'r3f-perf'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -9,6 +9,8 @@ import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
 import LastName from './LastName.jsx'
 import Mars from './Mars.jsx'
+import Placeholder from './Placeholder.jsx'
+import ImageBlocks from './ImageBlocks.jsx'
 
 
 export default function Experience()
@@ -52,7 +54,6 @@ export default function Experience()
         lastName.current.position.lerp(vec.set(0, 0, 0), 0.03)
       }
       return null;
-
     })
 
     // Hover is pointer on resume
@@ -62,24 +63,23 @@ export default function Experience()
 
 
     // File paths
-    const [ resume, newResume, darkResume, threeIcon, reactIcon, jsIcon ] = useLoader(TextureLoader, [
+    const [ resume, newResume, darkResume, threeIcon, reactIcon, jsIcon, dirtbike ] = useLoader(TextureLoader, [
       './environmentMaps/bold-resume-img.png',
       './environmentMaps/new-resume.png',
       './environmentMaps/dark-resume.png',
       './environmentMaps/threejs-icon.png',
       './environmentMaps/react-sticker.png',
-      './environmentMaps/js-icon.png'
+      './environmentMaps/js-icon.png',
+      './environmentMaps/dirtbike.jpg'
     ])
 
     const [texture, setTexture] = useState(darkResume);
-
 
 
     // Font for 3d Text
     const chillaxFont = './fonts/chillax-font.json'
     const latoLight = './fonts/lato-light.json'
     const latoBold = './fonts/lato-bold.json'
-
 
     return <>
 
@@ -93,37 +93,22 @@ export default function Experience()
         <Lights />
 
         {/* Resume Plane */}
-        <mesh
-        ref={resumePlane}
-        onClick={() => setClicked(prevClicked => !prevClicked)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        scale={1.3}
-        position={[-1.3, -.05, .1]}
-        rotation={[0, 0, 0]}
-        castShadow >
-            <planeGeometry args={[2.5, 3.5, 2]}/>
-            <boxGeometry args={[2.3, 3, .05]}/>
-            <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
-        </mesh>
+        <Suspense fallback={<Placeholder position={[0, 0, 0]} />}>
+          <mesh
+          ref={resumePlane}
+          onClick={() => setClicked(prevClicked => !prevClicked)}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          scale={1.3}
+          position={[-1.3, -.05, .1]}
+          rotation={[0, 0, 0]}
+          castShadow >
+              <planeGeometry args={[2.5, 3.5, 2]}/>
+              <boxGeometry args={[2.3, 3, .05]}/>
+              <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
+          </mesh>
+        </Suspense>
 
-
-        {/* Name 2d */}
-        {/* <Text
-            color={'white'}
-            fontSize={.18}
-            maxWidth={7}
-            lineHeight={1}
-            letterSpacing={0.08}
-            textAlign={'center'}
-            font={'./fonts/Roboto-Bold.ttf'}
-            anchorX={'center'}
-            anchorY={'middle'}
-            position={[-9.4, 1.95, .3]}
-            rotation={[0, 0, 0]}
-            >
-              Go back to the resume
-        </Text> */}
 
       {/* Full Stack Dev Letters */}
       <Text3D
@@ -145,6 +130,9 @@ export default function Experience()
       {/* Planet */}
       <Mars />
 
+      {/* Image Blocks */}
+      {/* <ImageBlocks /> */}
+
 
       {/* Adding my name text */}
       <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.8, -1]} scale={.8}  >
@@ -160,8 +148,3 @@ export default function Experience()
 
     </>
 }
-
-// Changes:
-// changed color of name text and made thinner diff font
-// changed font of full stack dev letters
-// raised the resume plane
