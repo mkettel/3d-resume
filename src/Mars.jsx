@@ -28,12 +28,16 @@ export default function Mars() {
   return <>
 
 
-    <mesh ref={stickerBall} position={[35, 5, -30]} rotation={[0, 0, 0]} scale={[.5, .5, .5]}  >
+    <mesh
+    ref={stickerBall}
+    position={[35, 5, -30]}
+    rotation={[0, 0, 0]}
+    scale={[.5, .5, .5]}
+    >
       <sphereGeometry args={[1.2, 32, 32]} />
       <meshStandardMaterial color={'red'} roughness={1.5} metalness={.3} specular={1} emissive={'red'} emissiveIntensity={2}/>
-      {/* <Decal position={[0, .5, 1 ]} rotation={[0, 0, 0]} scale={[1.2, 1.2, 1.2]} map={threeIcon} map-anisotropy={16} />
+      <Decal position={[0, .5, 1 ]} rotation={[0, 0, 0]} scale={[1.2, 1.2, 1.2]} map={threeIcon} map-anisotropy={16} />
       <Decal position={[-.2, .5, -1 ]} rotation={[0, 0, 0]} scale={[1, 1, 1]} map={reactIcon} map-anisotropy={16} />
-      <Decal position={[.2, -.5, 1.1 ]} rotation={[0, 0, 0]} scale={[.7, .7, .7]} map={jsIcon} map-anisotropy={16} /> */}
     </mesh>
 
   </>

@@ -37,7 +37,3 @@ export default function TextWords() {
 
   </>
 }
-
-
-
-// FC7753 old color for text
