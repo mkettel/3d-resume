@@ -7,6 +7,7 @@ import { Image, Text} from '@react-three/drei'
 
 export default function ImageBlocks() {
 
+  // Textures can be used but not a must and results in a loss of color
   const [ dirtbike, nightAgung ] = useLoader(TextureLoader, [
     './environmentMaps/dirtbike.jpg',
     './environmentMaps/night_agung.jpg'

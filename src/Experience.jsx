@@ -29,6 +29,7 @@ export default function Experience()
 
 
     // move camera to resume
+    // Look into wouter for world position
     useFrame(state =>
     {
       if (clicked) {
@@ -93,7 +94,6 @@ export default function Experience()
         <Lights />
 
         {/* Resume Plane */}
-        <Suspense fallback={<Placeholder position={[0, 0, 0]} />}>
           <mesh
           ref={resumePlane}
           onClick={() => setClicked(prevClicked => !prevClicked)}
@@ -107,7 +107,7 @@ export default function Experience()
               <boxGeometry args={[2.3, 3, .05]}/>
               <meshStandardMaterial map={ texture } side={THREE.DoubleSide} metalness={1} roughness={3} color={'white'} />
           </mesh>
-        </Suspense>
+
 
 
       {/* Full Stack Dev Letters */}
