@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import { Stars, View, Bounds, PerspectiveCamera } from '@react-three/drei'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, Suspense } from 'react'
 import { Analytics } from '@vercel/analytics/react';
+import Placeholder from './Placeholder'
 
 
 export default function App() {
@@ -37,7 +38,9 @@ export default function App() {
           <View index={1} track={view} >
             <PerspectiveCamera makeDefault fov={50} near={0.1} far={200} position={[-3.1, -.1, 6.3]} />
               <Stars saturation={0} radius={60} speed={1.5} fade />
-              <Experience />
+              <Suspense fallback={<Placeholder position={[0, 0, 0]} />}>
+                <Experience />
+              </Suspense>
           </View>
       </Canvas>
       </div>
