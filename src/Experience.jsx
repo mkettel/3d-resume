@@ -134,11 +134,11 @@ export default function Experience()
       <Mars />
 
       {/* Adding my name text */}
-      <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.8, -1]} scale={.8}  >
+      <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} scale={.8}  >
         <TextWords />
       </Float>
 
-      <Float ref={lastName} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.2, -1]} scale={.8} >
+      <Float ref={lastName} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} scale={.8} >
         <LastName />
       </Float>
 
