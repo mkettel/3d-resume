@@ -9,12 +9,11 @@ import TextWords from './TextWords.jsx'
 import Lights from './Lights.jsx'
 import LastName from './LastName.jsx'
 import Mars from './Mars.jsx'
-import Placeholder from './Placeholder.jsx'
-import ImageBlocks from './ImageBlocks.jsx'
 import DevLetters from './DevLetters.jsx'
 
 
 export default function Experience()
+
 {
     // States
     const [clicked, setClicked] = useState(false);
@@ -27,6 +26,28 @@ export default function Experience()
     const lastName = useRef() // last name 3d text
 
     const vec = new THREE.Vector3()
+
+    // Resizing for Mobile
+    const [imageScale, setImageScale] = useState(1.3)
+    const [imagePosition, setImagePosition] = useState([-1.3, -.05, .1])
+
+    useEffect(() => {
+      function handleResize() {
+        const { innerWidth } = window;
+        const isMobile = innerWidth <= 768; // Adjust the breakpoint for mobile devices
+        const scale = isMobile ? 1 : 1.3; // Adjust the scale values for mobile
+        const position = isMobile ? [-1.3, -.5, .1] : [-1.3, -.05, .1]
+        setImageScale(scale);
+        setImagePosition(position);
+      }
+      window.addEventListener('resize', handleResize);
+    handleResize(); // Call the function initially
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+    }, []);
+
 
 
     // move camera to resume
@@ -95,8 +116,8 @@ export default function Experience()
           onClick={() => setClicked(prevClicked => !prevClicked)}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
-          scale={1.3}
-          position={[-1.3, -.05, .1]}
+          scale={imageScale}
+          position={imagePosition}
           rotation={[0, 0, 0]}
           castShadow >
               <planeGeometry args={[2.5, 3.5, 2]}/>
