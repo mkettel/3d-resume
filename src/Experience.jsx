@@ -60,21 +60,21 @@ export default function Experience()
         state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
         state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 52, 0.04)
         state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
-        float.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
+        // float.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
+        // float.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
 
-        lastName.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
-        lastName.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
+        // lastName.current.scale.lerp(vec.set(.9, .9, .9), 0.03)
+        // lastName.current.position.lerp(vec.set(0, 0, -1.5), 0.03)
       } else {
         state.camera.lookAt(resumePlane.current.position.x, resumePlane.current.position.y, resumePlane.current.position.z)
         state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 60, 0.04)
         // state.camera.position.lerp(vec.set(-3.1, -.1, 6.3), 0.03) // allows camera to move freely if not clicked
         state.camera.updateProjectionMatrix()
-        float.current.position.lerp(vec.set(0, 0, 0), 0.03)
-        float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
+        // float.current.position.lerp(vec.set(0, 0, 0), 0.03)
+        // float.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
 
-        lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
-        lastName.current.position.lerp(vec.set(0, 0, 0), 0.03)
+        // lastName.current.scale.lerp(vec.set(1.2, 1.2, 1.2), 0.03)
+        // lastName.current.position.lerp(vec.set(0, 0, 0), 0.03)
       }
       return null;
     })

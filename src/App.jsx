@@ -35,7 +35,7 @@ export default function App() {
           <View index={1} track={view} >
             <PerspectiveCamera makeDefault fov={50} near={0.1} far={200} position={[-3.1, -.1, 6.3]} />
               <Stars saturation={0} radius={60} speed={1.5} fade />
-              <Suspense fallback={<Placeholder position={[0, 0, 0]} />}>
+              <Suspense fallback={<Placeholder position={[-1.3, -.05, .1]} />}>
                 <Experience />
               </Suspense>
           </View>
