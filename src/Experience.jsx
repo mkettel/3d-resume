@@ -11,6 +11,7 @@ import LastName from './LastName.jsx'
 import Mars from './Mars.jsx'
 import Placeholder from './Placeholder.jsx'
 import ImageBlocks from './ImageBlocks.jsx'
+import DevLetters from './DevLetters.jsx'
 
 
 export default function Experience()
@@ -77,11 +78,6 @@ export default function Experience()
     const [texture, setTexture] = useState(darkResume);
 
 
-    // Font for 3d Text
-    const chillaxFont = './fonts/chillax-font.json'
-    const latoLight = './fonts/lato-light.json'
-    const latoBold = './fonts/lato-bold.json'
-
     return <>
 
         {/* <Perf position="top-middle" /> */}
@@ -111,28 +107,10 @@ export default function Experience()
 
 
       {/* Full Stack Dev Letters */}
-      <Text3D
-        font={latoBold}
-        // lay on floor on back
-        // rotation={[-Math.PI / 4, 0, 0]}
-        rotation={[-Math.PI / 4, 0, 0]}
-        // position={[-2.8, -2, .3]}
-        position={[-2.8, -2, .3]}
-        scale={[.2, .2, .2]}
-        letterSpacing={.15}
-        height={.2}
-
-        >
-          Full Stack Developer
-        <meshBasicMaterial color={'#262626'} castShadow  />
-      </Text3D>
+      <DevLetters />
 
       {/* Planet */}
       <Mars />
-
-      {/* Image Blocks */}
-      {/* <ImageBlocks /> */}
-
 
       {/* Adding my name text */}
       <Float ref={float} speed={.001} rotationIntensity={.05} floatIntensity={.1} floatingRange={[-.9, 0]} position={[1.3, 1.8, -1]} scale={.8}  >

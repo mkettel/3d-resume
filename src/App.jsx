@@ -16,7 +16,7 @@ export default function App() {
   // Create Loading Animation for when page is loading
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 3500)
+    const timeout = setTimeout(() => setLoading(false), 4700)
     return () => clearTimeout(timeout)
   }, [])
 
@@ -26,9 +26,6 @@ export default function App() {
       <div className="loadingContainer">
         <div className="loadingAnimation">
           <p><span id='1' className='loadLetter'>M</span><span id="2" className='loadLetter'>K</span></p>
-          {/* <video autoPlay loop muted>
-            <source src={'./loaders/donut-load.mp4'} type="video/mp4" />
-          </video> */}
         </div>
       </div>
     ) : (
