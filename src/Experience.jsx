@@ -86,15 +86,9 @@ export default function Experience()
 
 
     // File paths
-    const [ resume, newResume, darkResume, threeIcon, reactIcon, jsIcon, dirtbike ] = useLoader(TextureLoader, [
-      './environmentMaps/bold-resume-img.png',
-      './environmentMaps/new-resume.png',
-      './environmentMaps/dark-resume.png',
-      './environmentMaps/threejs-icon.png',
-      './environmentMaps/react-sticker.png',
-      './environmentMaps/js-icon.png',
-      './environmentMaps/dirtbike.jpg'
-    ])
+    const [ darkResume ] = useLoader(TextureLoader, [
+      './environmentMaps/dark-resume.png'
+     ])
 
     const [texture, setTexture] = useState(darkResume);
 
