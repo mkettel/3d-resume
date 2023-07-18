@@ -3,6 +3,7 @@ import { Decal } from '@react-three/drei'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useFrame, useLoader } from '@react-three/fiber'
+import { Bloom, EffectComposer } from '@react-three/postprocessing'
 
 
 
@@ -26,6 +27,11 @@ export default function Mars() {
   ])
 
   return <>
+    <ambientLight intensity={.1} />
+
+    <EffectComposer>
+      <Bloom mipmapBlur />
+    </EffectComposer>
 
 
     <mesh
@@ -35,7 +41,7 @@ export default function Mars() {
     scale={[.5, .5, .5]}
     >
       <sphereGeometry args={[1.2, 32, 32]} />
-      <meshStandardMaterial color={'red'} roughness={1.5} metalness={.3} specular={1} emissive={'red'} emissiveIntensity={2}/>
+      <meshStandardMaterial toneMapped={false} color="white" emissive="orange" emissiveIntensity={1.7} />
       <Decal position={[0, .5, 1 ]} rotation={[0, 0, 0]} scale={[1.2, 1.2, 1.2]} map={threeIcon} map-anisotropy={16} />
       <Decal position={[-.2, .5, -1 ]} rotation={[0, 0, 0]} scale={[1, 1, 1]} map={reactIcon} map-anisotropy={16} />
     </mesh>
