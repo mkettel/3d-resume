@@ -1,6 +1,7 @@
 import { Text3D } from '@react-three/drei'
 import { useState, useEffect } from 'react';
 
+
 export default function DevLetters(props) {
 
   // Font for 3d Text
@@ -45,7 +46,10 @@ export default function DevLetters(props) {
 
       >
         Full Stack Developer
-      <meshBasicMaterial color={'#262626'} castShadow  />
+      <meshBasicMaterial
+      color={'#262626'}
+      castShadow
+        />
     </Text3D>
   </>
 }
