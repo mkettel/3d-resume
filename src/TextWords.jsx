@@ -12,7 +12,7 @@ export default function TextWords() {
 
   // Resizing for Mobile
   const [letterScale, setLetterScale] = useState(.3);
-  const [letterPosition, setLetterPosition] = useState([-3.05, 1.3, .2]);
+  const [letterPosition, setLetterPosition] = useState([.3, 1.5, .3]);
   const [letterRotation, setLetterRotation] = useState([0, -.1, 0])
 
   useEffect(() => {
