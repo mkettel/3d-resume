@@ -10,6 +10,9 @@ After getting very tired of using my normal pdf resume for everything, I decided
 | R3F         | HTML             |
 |             | CSS              |
 
+## Link
+[3D Resume](https://3d-resume-six.vercel.app/)
+
 ## Connect
 If you are curious about this project and are interested in learning more or contributing, please reach out via email or LinkedIn. I am always actively seeking collaboration and feedback.  
 - mattkettelkamp@gmail.com
